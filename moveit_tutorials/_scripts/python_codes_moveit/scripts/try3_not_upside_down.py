@@ -16,14 +16,14 @@ group_name = "panda_arm"  # Replace with your arm's planning group name
 group = moveit_commander.MoveGroupCommander(group_name)
 
 # Define the target position (modify as needed)
-target_position = [0.3, 0.0, 0.75]  # Replace with your desired position [x, y, z]
+target_position = [0.2, 0.2, 0.65]  # Replace with your desired position [x, y, z]
 
 # Create a quaternion to represent the orientation (using Euler angles)
 # Example: Roll, Pitch, Yaw angles in radians
 
-deg_roll = 0
+deg_roll = 180
 deg_pitch = 0
-deg_yaw = 360
+deg_yaw = 315
 
 deg2rad = 3.14/180
 

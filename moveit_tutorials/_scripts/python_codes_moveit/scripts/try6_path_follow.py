@@ -5,6 +5,8 @@ import rospy
 import moveit_commander
 import geometry_msgs.msg
 import copy
+from tf.transformations import quaternion_from_euler
+
 
 group = moveit_commander.MoveGroupCommander("panda_arm")  # Replace with your arm's planning group name
 
@@ -49,6 +51,36 @@ if __name__ == '__main__':
     x_old = wpose.position.x
     y_old = wpose.position.y
     z_old = wpose.position.z
+
+
+    # Define the target position (modify as needed)
+    current_position = [x_old, y_old, z_old]  # Replace with your desired position [x, y, z]
+
+    # Create a quaternion to represent the orientation (using Euler angles)
+    # Example: Roll, Pitch, Yaw angles in radians
+
+    deg_roll = 180
+    deg_pitch = 0
+    deg_yaw = 0
+
+    deg2rad = 3.14/180
+
+    roll = deg_roll * deg2rad
+    pitch = deg_pitch * deg2rad
+    yaw = deg_yaw * deg2rad
+
+    quaternion = quaternion_from_euler(roll, pitch, yaw)
+
+    # Set the target pose for the end effector
+    current_pose = geometry_msgs.msg.Pose()
+    current_pose.position.x = current_position[0]
+    current_pose.position.y = current_position[1]
+    current_pose.position.z = current_position[2]
+    current_pose.orientation.x = quaternion[0]
+    current_pose.orientation.y = quaternion[1]
+    current_pose.orientation.z = quaternion[2]
+    current_pose.orientation.w = quaternion[3]
+
 
     x_new = x_old 
     y_new = y_old + 0.1
