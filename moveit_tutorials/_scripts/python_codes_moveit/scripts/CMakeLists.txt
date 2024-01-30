@@ -1,5 +1,8 @@
-add_executable(try10_path_drawing src/try10_path_drawing.cpp)
-target_link_libraries (try10_path_drawing ${catkin_LIBRARIES})
+add_executable(all_codes src/all.cpp)
+add_executable(1posegoal src/1posegoal.cpp)
+
+target_link_libraries (all_codes ${catkin_LIBRARIES})
+target_link_libraries (1posegoal ${catkin_LIBRARIES})
 
 
 
